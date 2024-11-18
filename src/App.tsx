@@ -1,13 +1,10 @@
-import React, { Fragment } from 'react';
-
-
+import React, { Fragment } from "react";
+import Topic from "./components/Topic/Topic";
 
 function App() {
   return (
-    <Fragment >
-      <div className='main'>
-
-        </div>
+    <Fragment>
+      <Topic/>
     </Fragment>
   );
 }
