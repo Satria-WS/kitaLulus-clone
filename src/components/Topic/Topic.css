@@ -32,3 +32,12 @@
   font-weight: 800 !important;
   font-size: 1.2rem !important;
 }
+
+/* card hover ul li */
+.card {
+  transform: translateY(-10px);
+/* Optional: Adding a slight shadow to indicate hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
