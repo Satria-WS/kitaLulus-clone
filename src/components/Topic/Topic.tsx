@@ -32,7 +32,7 @@ const Topic = () => {
   return (
     <>
       <div className="container">
-        <div className=" font-[Poppins] ">
+        <div className=" font-[Poppins] max-sm:px-3 ">
           <Typography
             sx={{ fontWeight: "600", fontFamily: "Poppins" }}
             // variant="h3"
