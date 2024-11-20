@@ -1,7 +1,19 @@
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../../assets/logo.png";
-import DensityMediumIcon from '@mui/icons-material/DensityMedium';
+import DensityMediumIcon from "@mui/icons-material/DensityMedium";
+import Drawer from "@mui/material/Drawer";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
 
 const Header = () => {
+    
+  const drawerRef = useRef<HTMLDivElement | null>(null); // specific type (HTMLDivElement )
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   const menuList = [
     {
       name: "Info Loker",
@@ -17,36 +29,55 @@ const Header = () => {
     },
   ];
 
+  const toggleDrawer = (open: boolean) => () => {
+    setDrawerOpen(open);
+  };
+
+    // Close drawer if user clicks outside the drawer
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
+          setDrawerOpen(false); // Close the drawer
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
+
   return (
     <>
-      <div className="container sticky top-0 bg-white ">
+      <div className="container sticky top-0 bg-white">
         <div className="flex justify-between items-center font-[Poppins] py-1">
-          {/* bar hamburger */}
-          <div className="hidden max-lg:block max-sm:px-10 max-[443px]:order-2 cursor-pointer ">
-            <DensityMediumIcon/>
+          {/* Hamburger Icon */}
+          <div
+            className="hidden max-lg:block max-sm:px-10 max-[443px]:order-2 cursor-pointer"
+            onClick={toggleDrawer(true)}
+          >
+            <DensityMediumIcon />
           </div>
-          {/* logo */}
-          <div className="max-lg:ml-auto max-lg:mr-auto  ">
+          {/* Logo */}
+          <div className="max-lg:ml-auto max-lg:mr-auto">
             <img className="max-w-[149px]" src={logo} alt="logo" />
           </div>
-          {/* menu */}
+          {/* Desktop Menu (Hidden on Mobile) */}
           <div className="flex items-center justify-center max-lg:hidden">
             <ul className="flex flex-row space-x-10">
               {menuList.map((item, index) => (
-                <>
-                  <li
-                    key={index}
-                    className="hover:bg-[rgba(51,80,172,0.1)] font-light hover:font-semibold duration-300 cursor-pointer py-2 px-4 "
-                  >
-                    <a href={item.link}>{item.name}</a>
-                  </li>
-                </>
+                <li
+                  key={index}
+                  className="hover:bg-[rgba(51,80,172,0.1)] font-light hover:font-semibold duration-300 cursor-pointer py-2 px-4"
+                >
+                  <a href={item.link}>{item.name}</a>
+                </li>
               ))}
             </ul>
             <button className="pl-10">
               <a
                 href="https://id.kitalulus.com/pasang-loker"
-                className="bg-[darkorange] hover:bg-black duration-300 rounded-lg py-3 px-6 "
+                className="bg-[darkorange] hover:bg-black duration-300 rounded-lg py-3 px-6"
               >
                 <span className="text-white text-lg font-semibold">
                   Pasang Loker
@@ -56,7 +87,53 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+
+      {/* Drawer for Mobile */}
+      <Drawer
+        anchor="top"
+        hideBackdrop={true}
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        sx={{
+          "& .MuiDrawer-paper": {
+            position: "relative",
+            top: "30px",
+            width: "100%",
+            height: "auto",
+            maxWidth: 250,
+            padding: "16px",
+          },
+        }}
+      >
+        <Box
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
+          {/* Menu List */}
+          <List>
+            {menuList.map((item, index) => (
+              <ListItem key={index} component="a" href={item.link}>
+                <ListItemText primary={item.name} />
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          {/* Pasang Loker Button */}
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            href="https://id.kitalulus.com/pasang-loker"
+            sx={{ marginTop: "16px" }}
+          >
+            Pasang Loker
+          </Button>
+        </Box>
+      </Drawer>
     </>
   );
 };
+
 export default Header;
