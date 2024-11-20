@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container sticky top-0 bg-white ">
         <div className="flex justify-between items-center font-[Poppins] py-1">
           {/* bar hamburger */}
           <div className="hidden max-lg:block max-sm:px-10 max-[443px]:order-2 cursor-pointer ">
