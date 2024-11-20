@@ -22,7 +22,7 @@ const Header = () => {
       <div className="container">
         <div className="flex justify-between items-center font-[Poppins] py-1">
           {/* bar hamburger */}
-          <div className="hidden max-lg:block max-sm:pl-10 max-[443px]:order-2 ">
+          <div className="hidden max-lg:block max-sm:px-10 max-[443px]:order-2 cursor-pointer ">
             <DensityMediumIcon/>
           </div>
           {/* logo */}
