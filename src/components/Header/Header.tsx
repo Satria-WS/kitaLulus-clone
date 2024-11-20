@@ -10,7 +10,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 
 const Header = () => {
-    
   const drawerRef = useRef<HTMLDivElement | null>(null); // specific type (HTMLDivElement )
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -33,19 +32,53 @@ const Header = () => {
     setDrawerOpen(open);
   };
 
-    // Close drawer if user clicks outside the drawer
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        if (drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
-          setDrawerOpen(false); // Close the drawer
-        }
-      };
   
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, []);
+  // UseEffect
+  // Close drawer if user clicks outside the drawer
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        drawerRef.current &&
+        !drawerRef.current.contains(event.target as Node)
+      ) {
+        setDrawerOpen(false); // Close the drawer
+      }
+
+      // // when drawer is open , overflow will visible
+      // if (drawerOpen) {
+      //   document.body.style.overflow = "visible !important";
+      // } else {
+      //   // when drawer is close , scroll will auto
+      //   document.body.style.overflow = "auto"
+      // }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+
+  
+  // UseEffect
+  // Manage the scroll behavior when drawer is open or closed
+  // this useEffct still not working  < BUG >
+  useEffect(() => {
+    if (drawerOpen) {
+      // When drawer is open, set body overflow to visible
+      // document.body.style.overflow = "visible";
+
+      // When drawer is open, set body overflow to visible with !important
+      document.body.style.setProperty("overflow", "visible", "important");
+    } else {
+      // When drawer is closed, reset overflow to auto
+      // document.body.style.overflow = "auto";
+      
+         // When drawer is closed, reset overflow to auto with !important
+      document.body.style.setProperty("overflow", "auto", "important");
+    }
+  }, [drawerOpen]);
 
   return (
     <>
@@ -88,7 +121,6 @@ const Header = () => {
         </div>
       </div>
 
-
       {/* Drawer for Mobile */}
       <Drawer
         anchor="top"
@@ -107,6 +139,7 @@ const Header = () => {
         }}
       >
         <Box
+          ref={drawerRef}
           role="presentation"
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
