@@ -13,18 +13,19 @@ const Hero = () => {
   return (
     <>
       <div className="container">
-        <div className="grid  grid-cols-2 place-items-center  py-28 ">
+        <div className="grid  grid-cols-2 max-lg:grid-cols-1 place-items-center  py-28 ">
           {/* col-1 */}
-          <div>
+          <div className="self-start p-8">
             <Typography
-              sx={{ fontWeight: "600", fontFamily: "Poppins" }}
-              variant="h3"
+              sx={{ fontWeight: "600", fontFamily: "Poppins",   }}
+              // variant="h3"
             >
-              Halo Sobat KitaLulus, Ada yang bisa kami bantu?
+             <span className="text-[clamp(16px,5vw,48px)]">Halo Sobat KitaLulus, Ada yang bisa kami bantu?</span>
+
             </Typography>
 
             {/* input */}
-            <Stack spacing={2} sx={{ width: "100%" , padding: "2rem 0" }}>
+            <Stack spacing={2} sx={{ width: "100%"  , padding: "2rem 0" }}>
               <Autocomplete
                 id="free-solo-demo"
                 freeSolo
@@ -35,15 +36,15 @@ const Hero = () => {
                   //   placeholder="Please enter text" 
                   // />
 
-                  <TextField {...params} label="Ketik kata kunci" variant="outlined" /> 
+                  <TextField className=" max-w-[29rem] max-lg:max-w-full"  {...params} label="Ketik kata kunci" variant="outlined" /> 
                 )}
               />
 
             </Stack>
           </div>
           {/* col-2 */}
-          <div>
-            <img src={heroImage} alt="hero" />
+          <div className="w-[clamp(300px , 50vw,1200px)]">
+            <img className="w-full" src={heroImage} alt="hero" />
           </div>
         </div>
       </div>
