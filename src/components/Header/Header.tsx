@@ -8,10 +8,12 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
+import "./Header.css";
+
 
 const Header = () => {
   const drawerRef = useRef<HTMLDivElement | null>(null); // specific type (HTMLDivElement )
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
   const menuList = [
     {
@@ -32,7 +34,6 @@ const Header = () => {
     setDrawerOpen(open);
   };
 
-  
   // UseEffect
   // Close drawer if user clicks outside the drawer
   useEffect(() => {
@@ -59,8 +60,6 @@ const Header = () => {
     };
   }, []);
 
-
-  
   // UseEffect
   // Manage the scroll behavior when drawer is open or closed
   // this useEffct still not working  < BUG >
@@ -74,15 +73,15 @@ const Header = () => {
     } else {
       // When drawer is closed, reset overflow to auto
       // document.body.style.overflow = "auto";
-      
-         // When drawer is closed, reset overflow to auto with !important
+
+      // When drawer is closed, reset overflow to auto with !important
       document.body.style.setProperty("overflow", "auto", "important");
     }
   }, [drawerOpen]);
 
   return (
     <>
-      <div className="container sticky top-0 bg-white">
+      <div className="container sticky top-0 bg-white z-10">
         <div className="flex justify-between items-center font-[Poppins] py-1">
           {/* Hamburger Icon */}
           <div
@@ -129,12 +128,14 @@ const Header = () => {
         onClose={toggleDrawer(false)}
         sx={{
           "& .MuiDrawer-paper": {
+            backgroundColor: "white",
             position: "relative",
-            top: "30px",
+            top: "4rem",
             width: "100%",
             height: "auto",
-            maxWidth: 250,
+            maxWidth: "100%",
             padding: "16px",
+           
           },
         }}
       >
@@ -148,7 +149,10 @@ const Header = () => {
           <List>
             {menuList.map((item, index) => (
               <ListItem key={index} component="a" href={item.link}>
-                <ListItemText primary={item.name} />
+                <ListItemText
+                  className="hover:bg-[rgba(51,80,172,0.1)] font-light   cursor-pointer "
+                  primary={item.name}
+                />
               </ListItem>
             ))}
           </List>
