@@ -4,6 +4,7 @@ import React, { Fragment } from "react";
 import Topic from "./components/Topic/Topic";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
+import Faq from './components/Faq/Faq';
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Global styles={globalStyles} />
         <Header />
         <Hero />
-        <Topic />
+      <Topic />
+      <Faq/>
      
     </Fragment>
   );
