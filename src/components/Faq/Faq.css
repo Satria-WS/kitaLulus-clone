@@ -1,0 +1,39 @@
+/* Override .MuiListItemButton-root */
+
+/* ListItemButton component */
+.MuiListItemButton-root {
+  background-color: transparent; /* Default background */
+  /* padding-left: 0; */
+}
+
+/* Remove hover effect */
+.MuiListItemButton-root:hover {
+  background-color: transparent; /* Remove hover background color */
+}
+
+/* Remove active effect */
+.MuiListItemButton-root:active {
+  background-color: transparent; /* Remove active background color */
+}
+
+ /* Remove focus outline */
+.MuiListItemButton-root:focus {
+  outline: none;  
+}
+
+/* Remove ripple effect */
+.MuiListItemButton-root .MuiTouchRipple-root {
+  display: none;  /* Remove ripple effect */
+}
+
+
+.MuiBox-root {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* ListItemText component */
+.MuiListItemText-primary {
+  font-weight: 800 !important;
+  font-size: 1.2rem !important;
+}
