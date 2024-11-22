@@ -18,4 +18,5 @@ body {
   line-height: 1.6em;
 
   overflow: visible !important; /* Hanya cara sementara saja   */
+  padding: 0 !important;
 }
