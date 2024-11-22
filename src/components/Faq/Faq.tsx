@@ -13,27 +13,26 @@ import {
 } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { useState } from "react";
-import "./Topic.css";
+import "./Faq.css";
 
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   // interface
-    // interface
-    interface cardItems {
-      header: string;
-      list?: {
-        text: string;
-      }[];
-    }
-  
-    // interface
-    interface listItems {
+  // interface
+  interface cardItems {
+    header: string;
+    list?: {
       text: string;
-      linkText?: string;
-      linkUrl?: string;
-    }
-  
+    }[];
+  }
+
+  // interface
+  interface listItems {
+    text: string;
+    linkText?: string;
+    linkUrl?: string;
+  }
 
   // Toggle the card open/close state based on index
   const handleClick = (index: number) => {
@@ -41,7 +40,7 @@ const Faq = () => {
   };
 
   // List of items for card 1
-  const listItems:listItems[] = [
+  const listItems: listItems[] = [
     {
       text: "Buat akun menggunakan alamat email yang aktif dan lengkapi profil.",
     },
@@ -54,8 +53,7 @@ const Faq = () => {
   // List of card items for cards 2 - 6
   const cardItems: cardItems[] = [
     {
-      header:
-        "Bagaimana cara menghapus akun KitaLulus?",
+      header: "Bagaimana cara menghapus akun KitaLulus?",
       list: [
         {
           text: 'Buka menu "Akun"',
@@ -69,7 +67,8 @@ const Faq = () => {
       ],
     },
     {
-      header: "Mengapa saya tak kunjung mendapat panggilan interview, padahal saya sudah melamar banyak lowongan pekerjaan.",
+      header:
+        "Mengapa saya tak kunjung mendapat panggilan interview, padahal saya sudah melamar banyak lowongan pekerjaan.",
       list: [
         {
           text: "Tidak sesuai kualifikasi",
@@ -189,108 +188,31 @@ const Faq = () => {
   ];
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        py: 3,
-        gap: "1rem",
-      }}
-    >
-      <Typography
-        variant="h4"
-        component="h4"
-        sx={{ fontFamily: "Poppins", fontWeight: "600" }}
-      >
-        Yang sering ditanyakan
-      </Typography>
-
-      {/* Card 1 */}
-      <Card
+    <>
+      <Box
         sx={{
-          maxWidth: "820px",
-          width: "100%",
-          mx: "auto",
-          border: "1px solid #ced2da",
-          boxShadow: "0 2px 5px grey",
-          borderRadius: "15px",
-          paddingTop: "1rem",
-          paddingBottom: "1rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          py: 10,
+          gap: "1rem",
         }}
       >
-        <CardContent>
-          <List>
-            <ListItemButton
-              onClick={() => handleClick(0)}
-              sx={{
-                "&:hover": { backgroundColor: "transparent" },
-                "&:active": { backgroundColor: "transparent" },
-              }}
-            >
-              <ListItemText primary="Bagaimana cara saya mendapatkan pekerjaan di KitaLulus?" />
-              {openIndex === 0 ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={openIndex === 0} timeout={240}>
-              <List
-                component="ol"
-                sx={{
-                  listStyleType: "decimal",
-                  pl: 3,
-                  "& .MuiListItem-root": {
-                    display: "list-item",
-                  },
-                }}
-              >
-                <ListItem
-                  component="li"
-                  sx={{
-                    paddingLeft: 0,
-                    fontSize: "1.2rem",
-                    fontWeight: "500",
-                    color: "grey",
-                  }}
-                >
-                  Pertama-tama, kamu bisa download aplikasi KitaLulus melalui{" "}
-                  <a
-                    href="https://idkita.page.link/cs"
-                    className="text-[royalblue] underline"
-                  >
-                    <strong>Play Store atau App Store</strong>
-                  </a>
-                  . Kamu juga bisa mengaksesnya secara langsung melalui website{" "}
-                  <a
-                    href="https://www.kitalulus.com/"
-                    className="text-[royalblue] underline"
-                  >
-                    <strong>kitalulus.com</strong>
-                  </a>
-                  .
-                </ListItem>
-                {listItems.map((item, index) => (
-                  <ListItem
-                    key={index}
-                    component="li"
-                    sx={{
-                      paddingLeft: 0,
-                      fontSize: "1.2rem",
-                      fontWeight: "500",
-                      color: "grey",
-                    }}
-                  >
-                    {item.text}
-                  </ListItem>
-                ))}
-              </List>
-            </Collapse>
-          </List>
-        </CardContent>
-      </Card>
+        <Typography
+          component="h1"
+          sx={{
+            fontFamily: "Poppins",
+            fontWeight: "600",
+            padding: "1rem 3rem",
+          }}
+        >
+          <p className="text-[clamp(16px,5vw,48px)] max-lg:text-center ">
+            Yang Sering ditanyakan
+          </p>
+        </Typography>
 
-      {/* Cards 2 - 6 */}
-      {cardItems.map((card, index) => (
+        {/* Card 1 */}
         <Card
-          key={index}
           sx={{
             maxWidth: "820px",
             width: "100%",
@@ -305,16 +227,16 @@ const Faq = () => {
           <CardContent>
             <List>
               <ListItemButton
-                onClick={() => handleClick(index + 1)}
+                onClick={() => handleClick(0)}
                 sx={{
                   "&:hover": { backgroundColor: "transparent" },
                   "&:active": { backgroundColor: "transparent" },
                 }}
               >
-                <ListItemText primary={card.header} />
-                {openIndex === index + 1 ? <ExpandLess /> : <ExpandMore />}
+                <ListItemText primary="Bagaimana cara saya mendapatkan pekerjaan di KitaLulus?" />
+                {openIndex === 0 ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
-              <Collapse in={openIndex === index + 1} timeout={240}>
+              <Collapse in={openIndex === 0} timeout={240}>
                 <List
                   component="ol"
                   sx={{
@@ -325,7 +247,33 @@ const Faq = () => {
                     },
                   }}
                 >
-                  {card.list?.map((item, index) => (
+                  <ListItem
+                    component="li"
+                    sx={{
+                      paddingLeft: 0,
+                      fontSize: "1.2rem",
+                      fontWeight: "500",
+                      color: "grey",
+                    }}
+                  >
+                    Pertama-tama, kamu bisa download aplikasi KitaLulus melalui{" "}
+                    <a
+                      href="https://idkita.page.link/cs"
+                      className="text-[royalblue] underline"
+                    >
+                      <strong>Play Store atau App Store</strong>
+                    </a>
+                    . Kamu juga bisa mengaksesnya secara langsung melalui
+                    website
+                    <a
+                      href="https://www.kitalulus.com/"
+                      className="text-[royalblue] underline"
+                    >
+                      <strong>kitalulus.com</strong>
+                    </a>
+                    .
+                  </ListItem>
+                  {listItems.map((item, index) => (
                     <ListItem
                       key={index}
                       component="li"
@@ -337,7 +285,6 @@ const Faq = () => {
                       }}
                     >
                       {item.text}
-                      {/* {card.list.text} */}
                     </ListItem>
                   ))}
                 </List>
@@ -345,8 +292,68 @@ const Faq = () => {
             </List>
           </CardContent>
         </Card>
-      ))}
-    </Box>
+
+        {/* Cards 2 - 6 */}
+        {cardItems.map((card, index) => (
+          <Card
+            key={index}
+            sx={{
+              maxWidth: "820px",
+              width: "100%",
+              mx: "auto",
+              border: "1px solid #ced2da",
+              boxShadow: "0 2px 5px grey",
+              borderRadius: "15px",
+              paddingTop: "1rem",
+              paddingBottom: "1rem",
+            }}
+          >
+            <CardContent>
+              <List>
+                <ListItemButton
+                  onClick={() => handleClick(index + 1)}
+                  sx={{
+                    "&:hover": { backgroundColor: "transparent" },
+                    "&:active": { backgroundColor: "transparent" },
+                  }}
+                >
+                  <ListItemText primary={card.header} />
+                  {openIndex === index + 1 ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={openIndex === index + 1} timeout={240}>
+                  <List
+                    component="ol"
+                    sx={{
+                      listStyleType: "decimal",
+                      pl: 3,
+                      "& .MuiListItem-root": {
+                        display: "list-item",
+                      },
+                    }}
+                  >
+                    {card.list?.map((item, index) => (
+                      <ListItem
+                        key={index}
+                        component="li"
+                        sx={{
+                          paddingLeft: 0,
+                          fontSize: "1.2rem",
+                          fontWeight: "500",
+                          color: "grey",
+                        }}
+                      >
+                        {item.text}
+                        {/* {card.list.text} */}
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              </List>
+            </CardContent>
+          </Card>
+        ))}
+      </Box>
+    </>
   );
 };
 
