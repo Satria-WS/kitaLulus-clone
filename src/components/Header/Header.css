@@ -1,0 +1,9 @@
+.MuiListItemText-primary {
+
+  transition-duration: 300ms;
+}
+
+.MuiListItemText-primary:hover {
+  font-weight: 600;
+  padding: 1rem;
+}
