@@ -5,46 +5,46 @@ const Footer = () => {
     {
       title: "KitaLulus",
       items: [
-        { label: "Beranda", href: "#" },
-        { label: "Info Loker", href: "#" },
-        { label: "Pasang Loker", href: "#" },
-        { label: "Rekrutmen", href: "#" },
-        { label: "Try Out CPNS", href: "#" },
-        { label: "CV Builder", href: "#" },
-        { label: "Template CV Gratis", href: "#" },
-        { label: "Asuransi Kesehatan ", href: "#" },
+        { label: "Beranda", href: "https://id.kitalulus.com/" },
+        { label: "Info Loker", href: "https://www.kitalulus.com/" },
+        { label: "Pasang Loker", href: "https://id.kitalulus.com/pasang-loker" },
+        { label: "Rekrutmen", href: "https://id.kitalulus.com/premium-recruitment" },
+        { label: "Try Out CPNS", href: "https://id.kitalulus.com/try-out-cpns" },
+        { label: "CV Builder", href: "https://id.kitalulus.com/cv-builder" },
+        { label: "Template CV Gratis", href: "https://www.kitalulus.com/blog/template-cv-gratis/" },
+        { label: "Asuransi Kesehatan ", href: "https://id.kitalulus.com/asuransi-kesehatan-karyawan" },
       ],
     },
     {
       title: "Perusahaan",
       items: [
-        { label: "Tentang Kami", href: "#" },
-        { label: "Kebijakan Privasi", href: "#" },
-        { label: "Syarat & Ketentuan", href: "#" },
-        { label: "Kerjasama", href: "#" },
+        { label: "Tentang Kami", href: "https://id.kitalulus.com/tentang-kitalulus" },
+        { label: "Kebijakan Privasi", href: "https://id.kitalulus.com/kebijakan-privasi" },
+        { label: "Syarat & Ketentuan", href: "https://id.kitalulus.com/syarat-dan-ketentuan" },
+        { label: "Kerjasama", href: "https://id.kitalulus.com/partner" },
       ],
     },
     {
       title: "Blog",
       items: [
-        { label: "Seputar Kerja", href: "#" },
-        { label: "Bisnis", href: "#" },
-        { label: "Info CPNS & PPPK", href: "#" },
-        { label: "Gaya Hidup", href: "#" },
-        { label: "Investasi", href: "#" },
-        { label: "Libur Nasional", href: "#" },
-        { label: "Job Description", href: "#" },
+        { label: "Seputar Kerja", href: "https://www.kitalulus.com/blog/seputar-kerja/" },
+        { label: "Bisnis", href: "https://www.kitalulus.com/blog/bisnis/" },
+        { label: "Info CPNS & PPPK", href: "https://www.kitalulus.com/blog/info-cpns/" },
+        { label: "Gaya Hidup", href: "https://www.kitalulus.com/blog/gaya-hidup/" },
+        { label: "Investasi", href: "https://www.kitalulus.com/blog/investasi/" },
+        { label: "Libur Nasional", href: "https://id.kitalulus.com/libur-nasional" },
+        { label: "Job Description", href: "https://www.kitalulus.com/blog/job-description/" },
       ],
     },
     {
       title: "Ikuti Kami",
       items: [
-        { label: "Instagram", href: "#" },
-        { label: "Facebook", href: "#" },
-        { label: "Twitter", href: "#" },
-        { label: "Telegram", href: "#" },
-        { label: "Tiktok", href: "#" },
-        { label: "Youtube", href: "#" },
+        { label: "Instagram", href: "https://www.instagram.com/kitalulus/#" },
+        { label: "Facebook", href: "https://x.com/kitalulus" },
+        { label: "Twitter", href: "https://x.com/kitalulus" },
+        { label: "Telegram", href: "https://t.me/kitalulus" },
+        { label: "Tiktok", href: "https://www.tiktok.com/@kitalulus" },
+        { label: "Youtube", href: "https://www.youtube.com/c/KitaLulus" },
       ],
     },
   ];
@@ -53,11 +53,11 @@ const Footer = () => {
     <>
       <div className=" bg-[#f9fafb] my-20 px-12 py-10">
         {/* parent */}
-        <div className="grid grid-cols-5 place-items-start gap-10">
+        <div className="grid grid-cols-5 max-lg:grid-cols-2 max-sm:grid-cols-1 place-items-start gap-10">
           {/* logo */}
-          <div className="space-y-5">
-            <img className="max-w-[150px]" src={logo} alt="logo" />
-            <p className="text-gray-500 text-base">
+          <div className="flex flex-col space-y-5 gap-3">
+            <img className="max-w-[150px] max-sm:order-last" src={logo} alt="logo" />
+            <p className="text-gray-500 text-base  ">
               KitaLulus adalah sebuah perusahaan rintisan dengan satu misi
               utama, yaitu meningkatkan kesejahteraan masyarakat dengan
               memaksimalkan kesempatan kerja setiap individu lewat akses
@@ -76,7 +76,9 @@ const Footer = () => {
                     className="text-xl decoration-orange-400 hover:underline hover:text-orange-400 duration-300 hover:font-semibold "
                     key={itemIndex}
                   >
-                    <a href={item.href} target="_blank" rel="noreferrer"  >{item.label}</a>
+                    <a href={item.href} target="_blank" rel="noreferrer">
+                      {item.label}
+                    </a>
                   </li>
                 ))}
               </ul>
