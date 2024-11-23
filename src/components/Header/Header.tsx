@@ -10,7 +10,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import "./Header.css";
 
-
 const Header = () => {
   const drawerRef = useRef<HTMLDivElement | null>(null); // specific type (HTMLDivElement )
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
@@ -92,7 +91,9 @@ const Header = () => {
           </div>
           {/* Logo */}
           <div className="max-lg:ml-auto max-lg:mr-auto">
-            <img className="max-w-[149px]" src={logo} alt="logo" />
+            <a href="https://id.kitalulus.com/" target="_blank"  rel="noreferrer">
+              <img className="max-w-[149px]" src={logo} alt="logo" />
+            </a>
           </div>
           {/* Desktop Menu (Hidden on Mobile) */}
           <div className="flex items-center justify-center max-lg:hidden">
@@ -135,7 +136,6 @@ const Header = () => {
             height: "auto",
             maxWidth: "100%",
             padding: "16px",
-           
           },
         }}
       >
@@ -150,7 +150,7 @@ const Header = () => {
             {menuList.map((item, index) => (
               <ListItem key={index} component="a" href={item.link}>
                 <ListItemText
-                  className="hover:bg-[rgba(51,80,172,0.1)] font-light   cursor-pointer "
+                  className="hover:bg-[rgba(51,80,172,0.1)] font-light cursor-pointer "
                   primary={item.name}
                 />
               </ListItem>
