@@ -196,6 +196,7 @@ const Faq = () => {
           alignItems: "center",
           py: 10,
           gap: "1rem",
+          backgroundColor:"#f9fafb"
         }}
       >
         <Typography
