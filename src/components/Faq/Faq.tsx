@@ -196,7 +196,7 @@ const Faq = () => {
           alignItems: "center",
           py: 10,
           gap: "1rem",
-          backgroundColor:"#f9fafb"
+          backgroundColor: "#f9fafb",
         }}
       >
         <Typography
@@ -219,10 +219,15 @@ const Faq = () => {
             width: "100%",
             mx: "auto",
             border: "1px solid #ced2da",
-            boxShadow: "0 2px 5px grey",
+            // boxShadow: "0 2px 5px grey",
             borderRadius: "15px",
             paddingTop: "1rem",
             paddingBottom: "1rem",
+            cursor: "pointer",
+            transition: "all 0.3s ease",
+            "&:hover": {
+              boxShadow: "0 2px 5px grey",
+            },
           }}
         >
           <CardContent>
@@ -234,7 +239,10 @@ const Faq = () => {
                   "&:active": { backgroundColor: "transparent" },
                 }}
               >
-                <ListItemText primary="Bagaimana cara saya mendapatkan pekerjaan di KitaLulus?" />
+                {/* <ListItemText primary="Bagaimana cara saya mendapatkan pekerjaan di KitaLulus?" /> */}
+                <span className="w-full font-extrabold text-xl">
+                  Bagaimana cara saya mendapatkan pekerjaan di KitaLulus?
+                </span>
                 {openIndex === 0 ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
               <Collapse in={openIndex === 0} timeout={240}>
@@ -303,10 +311,15 @@ const Faq = () => {
               width: "100%",
               mx: "auto",
               border: "1px solid #ced2da",
-              boxShadow: "0 2px 5px grey",
+              // boxShadow: "0 2px 5px grey",
               borderRadius: "15px",
               paddingTop: "1rem",
               paddingBottom: "1rem",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                boxShadow: "0 2px 5px grey",
+              },
             }}
           >
             <CardContent>
@@ -318,7 +331,10 @@ const Faq = () => {
                     "&:active": { backgroundColor: "transparent" },
                   }}
                 >
-                  <ListItemText primary={card.header} />
+                  {/* <ListItemText primary={card.header} /> */}
+                  <span className="w-full font-extrabold text-xl">
+                    {card.header}
+                  </span>
                   {openIndex === index + 1 ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={openIndex === index + 1} timeout={240}>
